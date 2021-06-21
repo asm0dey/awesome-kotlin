@@ -349,6 +349,24 @@ category("Android") {
       setTags("permissions", "coroutines", "android", "library")
       setPlatforms(ANDROID)
     }
+    link {
+      github = "MackHartley/DashedView"
+      desc = "The easiest way to create a dashed or striped background on Android"
+      setTags("library", "android", "ui")
+      setPlatforms(ANDROID)
+    }
+    link {
+      github = "MackHartley/RoundedProgressBar"
+      desc = "A customizable, animated progress bar that features rounded corners. This Android library is designed to look great and be simple to use"
+      setTags("library", "android", "ui", "progressbar")
+      setPlatforms(ANDROID)
+    }
+    link {
+      github = "developingdeveloper-tech/toaster-android"
+      desc = "A simple library to add custom toast to android applications."
+      setTags("ui", "android", "custom-toast")
+      setPlatforms(ANDROID)
+    }
   }
   subcategory("Frameworks") {
     link {

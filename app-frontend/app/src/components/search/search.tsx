@@ -1,14 +1,13 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import {withRouter} from "react-router";
-import {parse} from "query-string";
-
-const styles = require("./search.less");
+import "./search.less";
 
 class SearchComponent extends React.Component<SearchProps, SearchState> {
+  private readonly inputRef: React.RefObject<HTMLInputElement>;
   constructor(props) {
     super(props);
     this.state = {value: ""};
+    this.inputRef = React.createRef();
   }
 
   handleChange = (event) => {
@@ -24,19 +23,19 @@ class SearchComponent extends React.Component<SearchProps, SearchState> {
   };
 
   componentDidMount() {
-    const query = parse(this.props.location.search, {}).q as string;
+    const query = new URLSearchParams(this.props.location.search).get("q");
     if (query) {
       this.setState({value: query});
       this.props.onChange(query);
     }
-    (ReactDOM.findDOMNode(this.refs["search"]) as HTMLInputElement).focus();
+    this.inputRef.current.focus();
   };
 
   render() {
-    return <section className={styles.search}>
-      <form className={styles.search_wrapper}>
-        <input className={styles.search_field}
-               ref="search"
+    return <section className="search">
+      <form className="search_wrapper">
+        <input className="search_field"
+               ref={this.inputRef}
                onKeyPress={this.handleKeyPress}
                onChange={this.handleChange}
                placeholder="Type to Filter"
